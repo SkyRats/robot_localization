@@ -137,13 +137,14 @@ add_executable(ekf_localization_node src/ekf_localization_node.cpp)
 add_executable(ukf_localization_node src/ukf_localization_node.cpp)
 add_executable(navsat_transform_node src/navsat_transform_node.cpp)
 add_executable(robot_localization_listener_node src/robot_localization_listener_node.cpp)
-
+add_executable(stamp_and_covariance src/stamp_and_covariance.cpp)
 # Dependencies
 add_dependencies(filter_base ${PROJECT_NAME}_gencpp)
 add_dependencies(navsat_transform ${PROJECT_NAME}_gencpp)
 add_dependencies(robot_localization_listener_node ${PROJECT_NAME}_gencpp)
 
 # Linking
+target_link_libraries(stamp_and_covariance ${catkin_LIBRARIES})
 target_link_libraries(ros_filter_utilities ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES})
 target_link_libraries(filter_utilities ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES})
 target_link_libraries(filter_base filter_utilities ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES})

@@ -1,0 +1,13 @@
+<launch> <!-- Unscented Kalman Filter with dji Tello-->>
+  <!--node pkg="tf2_ros" type="static_transform_publisher" name="bl_imu" args="0 -0.3 0.52 -1.570796327 0 1.570796327 base_link tello/base_link"/-->
+  <node pkg="robot_localization" type="stamp_and_covariance" name="stmp"/>
+  <node pkg="robot_localization" type="ukf_localization_node" name="ukf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/tello_ukf.yaml" />
+  
+    <!--  Placeholder for output topic remapping
+    <remap from="odometry/filtered" to=""/>
+    <remap from="accel/filtered" to=""/>
+    -->
+
+  </node>
+</launch>
